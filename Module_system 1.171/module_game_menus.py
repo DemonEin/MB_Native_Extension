@@ -3044,6 +3044,10 @@ game_menus = [
            (change_screen_return),
         ]
        ),
+       ("camp_open_mod", [], "Open mod menu", [
+        (jump_to_menu, "mnu_mod_menu"),
+        ],
+       ),
       ]
   ),
   ("camp_cheat",0,
@@ -14505,7 +14509,17 @@ game_menus = [
     ]
   ),
 
-  
+  #mod menu
+  ("mod_menu", 0, "Mod Menu", "none", [], [
+    ("back_to_camp", [], "Return to camp menu", [
+      (jump_to_menu, "mnu_camp"),
+    ],
+    ),
+    ("spawn_looters", [], "Spawn looters nearby", [
+      (set_spawn_radius, 3),
+      (spawn_around_party, "p_main_party", "pt_looters"),
+    ]),
+  ]),
   
 
   
