@@ -8,5 +8,5 @@
 
 
 
-export_dir = "H:/Program Files (x86)/Steam/steamapps/common/MountBlade Warband/Modules/Mod 1/"
+export_dir = "C:/Program Files (x86)/Steam/steamapps/common/MountBlade Warband/Modules/MB_Native_Extension/"
 #export_dir = "C:/Program Files (x86)/Mount&Blade Warband/Modules/Native/"
