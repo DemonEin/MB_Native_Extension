@@ -84,6 +84,10 @@ party_templates = [
 
   ("routed_warriors","Routed Enemies",icon_vaegir_knight,0,fac_commoners,soldier_personality,[]),
 
+  #modstart
+  #companion parties
+  ("companion","Companion", icon_gray_knight, 0, fac_commoners, merchant_personality, []),
+  #modend
 
 # Caravans
   ("center_reinforcements","Reinforcements",icon_axeman|carries_goods(16),0,fac_commoners,soldier_personality,[(trp_townsman,5,30),(trp_watchman,4,20)]),  

@@ -14509,6 +14509,8 @@ game_menus = [
     ]
   ),
 
+  #modstart
+
   #mod menu
   ("mod_menu", 0, "Mod Menu", "none", [], [
     ("back_to_camp", [], "Return to camp menu", [
@@ -14520,7 +14522,9 @@ game_menus = [
       (spawn_around_party, "p_main_party", "pt_looters"),
     ]),
   ]),
-  
 
+  #("companion_party_encounter", 0, "")
+  
+  #modend
   
  ]

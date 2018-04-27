@@ -1576,7 +1576,7 @@ dialogs = [
   [anyone,"start", [(troop_slot_eq,"$g_talk_troop", slot_troop_occupation, slto_player_companion),
                     (neg|main_party_has_troop,"$g_talk_troop"),
                     (eq, "$talk_context", tc_party_encounter)],
-   "{!}Do you want me to rejoin you?", "close_window",[]], # unused
+   "{!}Do you want me to rejoin you?", "companion_rehire",[]], # unused
   [anyone,"start", [(neg|main_party_has_troop,"$g_talk_troop"),(eq, "$g_encountered_party", "p_four_ways_inn")], "{!}Do you want me to rejoin you?", "close_window",[]], # unused
 #  [anyone,"member_separate_inn", [], "I don't know what you will do without me, but you are the boss. I'll wait for you at the Four Ways inn.", "close_window",
 #  [anyone,"member_separate_inn", [], "All right then. I'll meet you at the four ways inn. Good luck.", "close_window",
@@ -1858,6 +1858,24 @@ dialogs = [
             (call_script, "script_npc_morale", "$g_talk_troop"),
             (assign, "$npc_quit_morale", reg0),
       ]],
+
+  #modstart
+  # adds companion mission dialogue
+
+  [anyone|plyr,"member_talk", [], "I need you to go do something for me.", "companion_missions_to",[]],
+  
+  #may or may not work, might go back to member_talk
+  [anyone,"companion_missions_to", [], "What do you need?", "companion_missions",[]],
+  [anyone|plyr,"companion_missions", [], "I need you to go gather supplies for the party.", "companion_missions_supplies_to",[]],
+
+  [anyone,"companion_missions_supplies_to", [], "Very well, I will head out immediately.", "companion_missions_supplies",[]],
+  [anyone|plyr,"companion_missions_supplies", [], "Good luck on your travels.", "close_window",[
+    (store_conversation_troop, reg0),
+    (call_script, "script_companion_missions_supplies"),
+  ]],
+  [anyone|plyr,"companion_missions_supplies", [], "On second thought, stay here.", "member_talk",[]],
+
+  #modend
 
   [anyone,"member_separate", [
             (gt, "$npc_quit_morale", 30),
@@ -3214,6 +3232,7 @@ dialogs = [
   (lt, ":prison_center", centers_begin),  
   ], "So... Do you want me back yet?", "companion_rehire",
    []],
+  
 #Ministerial issues
    
 

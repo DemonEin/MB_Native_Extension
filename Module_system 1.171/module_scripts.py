@@ -25896,6 +25896,16 @@ scripts = [
 	      (unlock_achievement, ACHIEVEMENT_KNIGHTS_OF_THE_ROUND),
 	    (try_end),
 	  (try_end),
+
+    #modstart
+    (try_begin),
+      (party_count_companions_of_type,reg0,"$g_encountered_party",":troop_no"),
+      (gt, reg0, 0),
+      (remove_party,"$g_encountered_party"),
+      (change_screen_return),
+    (try_end),
+    #modend
+
   ]),
   
 
@@ -50778,5 +50788,17 @@ scripts = [
     (cur_tableau_add_sun_light, pos8, 175,150,125),
     ]),
    #INVASION MODE END
-     
+
+  #modstart
+
+  ("companion_missions_supplies", [
+    #reg0 contains mission companion troop id
+    (assign, ":troop_id", reg0),
+    (set_spawn_radius,0),
+    (spawn_around_party, "p_main_party", "pt_companion"),
+    (party_add_members, reg0, ":troop_id", 1),
+    (remove_member_from_party, ":troop_id", "p_main_party"),
+  ]),
+
+  #modend
 ]
